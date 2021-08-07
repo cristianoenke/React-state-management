@@ -45,6 +45,7 @@ const App = () => {
   return (
     <div>
       <Toggle />
+      <p> Other Status: </p>
     </div>
   )
 }
@@ -52,14 +53,22 @@ const App = () => {
 const Toggle = () => {
     const [toggle, setToggle] = useState(false);
 
-    const handleToggle = () => setToggle((prevState)=>!prevState)
+    const handleToggle = () => setToggle(prevState=>!prevState)
 
     return (
         <div>
-         <p>The Status is:{toggle ? "ON" : "OFF"}</p>
-         <button onClick={handleToggle}> Toggle </button>
-    </div>
+            <ToggleStatus toggle={toggle} />
+            <ToggleButton handleToggle={handleToggle} />
+        </div>
     )
 }
 
+const ToggleStatus = ({toggle}) => (
+    <p>The Status is:{toggle ? "ON" : "OFF"}</p>
+ );
+
+const ToggleButton = ({handleToggle}) => (
+    <button onClick={handleToggle}> Toggle </button>
+
+    )
 export default App;
